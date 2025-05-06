@@ -20,10 +20,13 @@ jobs:
           dotnet-version: '7.0.x'
 
       - name: Restaurar dependências
-        run: dotnet restore
+        run: dotnet restore github-actions-dotnet-webapp/github4women/github4women.csproj
+        # Caminho correto para o arquivo .csproj
 
       - name: Compilar aplicação
-        run: dotnet build --no-restore
+        run: dotnet build github-actions-dotnet-webapp/github4women/github4women.csproj --no-restore
+        # Caminho correto para o arquivo .csproj
 
       - name: Rodar testes
-        run: dotnet test --no-build --verbosity normal
+        run: dotnet test github-actions-dotnet-webapp/github4women/github4women.csproj --no-build --verbosity normal
+        # Caminho correto para o arquivo .csproj
