@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
   schedule:
-    - cron: '0 * * * *'  # Executa a cada hora
+    - cron: '0 * * * *' # Executa a cada hora
 
 jobs:
   build:
@@ -19,14 +19,14 @@ jobs:
         with:
           dotnet-version: '7.0.x'
 
-      # Script personalizado: Restaurar dependências
       - name: Restaurar dependências
-        run: dotnet restore github4women/github4women.csproj
+        run: dotnet restore
+        working-directory: github4women
 
-      # Script personalizado: Compilar a aplicação
       - name: Compilar aplicação
-        run: dotnet build github4women/github4women.csproj --no-restore
+        run: dotnet build --no-restore
+        working-directory: github4women
 
-      # Script personalizado: Rodar testes
       - name: Executar testes
-        run: dotnet test github4women/github4women.csproj --no-build --verbosity normal
+        run: dotnet test --no-build --verbosity normal
+        working-directory: github4women
